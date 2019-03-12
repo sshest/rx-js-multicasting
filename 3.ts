@@ -8,7 +8,7 @@ import { log, observerA, observerB } from './observers';
  * -------------^-d-->
  */
 
-const subject = new BehaviorSubject(0);
+const subject = new BehaviorSubject(0); // Remembers last value even after being completed
 log('observerA subscribed');
 
 subject.subscribe(observerA);

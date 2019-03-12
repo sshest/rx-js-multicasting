@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sshest/rx-js-multicasting#readme",
   "dependencies": {
+    "colors": "^1.3.3",
     "rxjs": "^6.4.0"
   }
 }

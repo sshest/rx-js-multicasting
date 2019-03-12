@@ -8,7 +8,7 @@ import { log, observerA, observerB } from './observers';
  * -------------^-a,b,c,d>
  */
 
-const subject = new ReplaySubject(10);
+const subject = new ReplaySubject(10); // Replays last values by buffer size
 
 subject.subscribe(observerA);
 log('observerA subscribed');
