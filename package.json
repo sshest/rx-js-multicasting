@@ -1,0 +1,22 @@
+{
+  "name": "rx-js-multicasting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sshest/rx-js-multicasting.git"
+  },
+  "author": "sshest78@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sshest/rx-js-multicasting/issues"
+  },
+  "homepage": "https://github.com/sshest/rx-js-multicasting#readme",
+  "dependencies": {
+    "rxjs": "^6.4.0"
+  }
+}
