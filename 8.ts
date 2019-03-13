@@ -1,9 +1,9 @@
 import {
     Subject, interval
-} from "rxjs/index";
+} from "rxjs";
 import { share, tap } from "rxjs/internal/operators";
-import { observerA, observerB } from "./observers";
-
+import { observerA, observerB, log } from "./observers";
+(
 /**
  * publish - combines multicast with different Subjects
  */
@@ -21,13 +21,13 @@ import { observerA, observerB } from "./observers";
 
 const shared = interval(1000)
     .pipe(
-        tap(() => log('source ' + x)),
+        tap(x => log('source ' + x)),
         // Subscribes on outer stream and produces inner stream through subject
         share()
     );
 
 
-const subA = shared.subscribe(observerA); // start stream execution (aka connect())
+let subA = shared.subscribe(observerA); // start stream execution (aka connect())
 
 let subB;
 setTimeout(() => {

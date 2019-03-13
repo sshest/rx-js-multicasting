@@ -1,8 +1,8 @@
 import {
     Subject, interval
-} from "rxjs/index";
-import { multicast , take } from "rxjs/internal/operators";
-import { observerA, observerB } from "./observers";
+} from "rxjs";
+import { multicast , refCount, take, tap } from "rxjs/internal/operators";
+import { observerA, observerB, log } from "./observers";
 
 /**
  * RefCount: automatically start and stop execution by counting subscriptions
@@ -10,7 +10,7 @@ import { observerA, observerB } from "./observers";
 
 const shared = interval(1000)
     .pipe(
-        tap(() => log('source ' + x)),
+        tap(x => log('source ' + x)),
         // Subscribes on outer stream and produces inner stream through subject
         multicast(new Subject()),
         refCount()

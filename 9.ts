@@ -1,8 +1,13 @@
 import {
     ReplaySubject, interval
-} from "rxjs/index";
-import { multicast , take } from "rxjs/internal/operators";
-import { observerA, observerB } from "./observers";
+} from "rxjs";
+import { multicast , refCount, take, tap } from "rxjs/internal/operators";
+import { observerA, observerB, log } from "./observers";
+
+/**
+ * Multicast with a subjectFactory
+ */
+
 
 function subjectFactory() {
     return new ReplaySubject();
@@ -10,7 +15,7 @@ function subjectFactory() {
 
 const shared = interval(1000).take(5)
     .pipe(
-        tap(() => log('source ' + x)),
+        tap(x => log('source ' + x)),
         // Factory will give new instance of Subject and start new stream
         multicast(subjectFactory),
         refCount()
@@ -19,7 +24,7 @@ const shared = interval(1000).take(5)
 //                          A
 // subject 2:               --0--1--2--3--4|
 
-const subA = shared.subscribe(observerA); // start stream execution (aka connect())
+let subA = shared.subscribe(observerA); // start stream execution (aka connect())
 
 let subB;
 setTimeout(() => {
