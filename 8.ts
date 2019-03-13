@@ -1,9 +1,9 @@
 import {
-    Subject, interval
+    interval
 } from "rxjs";
 import { share, tap } from "rxjs/internal/operators";
 import { observerA, observerB, log } from "./observers";
-(
+
 /**
  * publish - combines multicast with different Subjects
  */
